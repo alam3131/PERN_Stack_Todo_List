@@ -13,7 +13,7 @@ const InputTodo = () => {
         body: JSON.stringify(body),
       });
 
-      console.log(response);
+      window.location = "/"; // Refresh and show changes when response is sent
     } catch (err) {
       console.error(err.message);
     }
