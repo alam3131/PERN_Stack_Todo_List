@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 
+import EditTodo from "./EditTodo";
+
 const ListTodos = () => {
   const [todos, setTodos] = useState([]);
 
@@ -20,10 +22,18 @@ const ListTodos = () => {
         method: "DELETE",
       });
 
-      setTodos(todos.filter(todo => todo.todo_id !== id));
+      setTodos(todos.filter((todo) => todo.todo_id !== id));
     } catch (err) {
       console.error(err.message);
     }
+  };
+
+  const updateTodoInList = (id, newDescription) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.todo_id === id ? { ...todo, description: newDescription } : todo
+      )
+    );
   };
 
   useEffect(() => {
@@ -52,7 +62,7 @@ const ListTodos = () => {
             <tr key={todo.todo_id}>
               <td>{todo.description}</td>
               <td>
-                <button className="btn btn-success">Edit</button>
+                <EditTodo todo={todo} updateTodoInList={updateTodoInList} />
               </td>
               <td>
                 <button
