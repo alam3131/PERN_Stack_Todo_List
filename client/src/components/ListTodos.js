@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
-
 import EditTodo from "./EditTodo";
+import CheckBox from "./CheckBox";
 
 const ListTodos = () => {
   const [todos, setTodos] = useState([]);
@@ -28,10 +28,16 @@ const ListTodos = () => {
     }
   };
 
-  const updateTodoInList = (id, newDescription) => {
+  const updateTodoInList = (id, newDescription, newCompleted) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.todo_id === id ? { ...todo, description: newDescription } : todo
+        todo.todo_id === id
+          ? {
+              ...todo,
+              description: newDescription ?? todo.description,
+              completed: newCompleted ?? todo.completed,
+            }
+          : todo
       )
     );
   };
@@ -53,13 +59,11 @@ const ListTodos = () => {
           </tr>
         </thead>
         <tbody>
-          {/*           <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-          </tr> */}
           {todos.map((todo) => (
             <tr key={todo.todo_id}>
+              <td>
+                <CheckBox todo={todo} updateTodoInList={updateTodoInList} /> 
+              </td>
               <td>{todo.description}</td>
               <td>
                 <EditTodo todo={todo} updateTodoInList={updateTodoInList} />
