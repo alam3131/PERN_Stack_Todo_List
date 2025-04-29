@@ -63,7 +63,7 @@ const ListTodos = () => {
           {todos.map((todo) => (
             <tr key={todo.todo_id}>
               <td>
-                <CheckBox todo={todo} updateTodoInList={updateTodoInList} /> 
+                <CheckBox todo={todo} updateTodoInList={updateTodoInList} />
               </td>
               <td>{todo.description}</td>
               <td>

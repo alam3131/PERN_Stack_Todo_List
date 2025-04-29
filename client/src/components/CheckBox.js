@@ -35,6 +35,7 @@ export default function CheckBox({ todo, updateTodoInList }) {
           ? `Mark ${todo.description} as incomplete`
           : `Mark ${todo.description} as complete`
       }
+      style={{ width: "18px", height: "18px", cursor: "pointer" }}
     />
   );
 }
