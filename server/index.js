@@ -9,6 +9,10 @@ app.use(express.json()); //req.body
 
 //ROUTES//
 
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
+
 //create a todo
 
 app.post("/todos", async (req, res) => {
@@ -82,6 +86,6 @@ app.delete("/todos/:id", async (req, res) => {
   }
 });
 
-app.listen(8000, () => {
-  console.log("server has started on port 8000");
+app.listen(process.env.PORT || 8000, () => {
+  console.log(`Server is running on port ${process.env.PORT || 8000}`);
 });
