@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
 export default function CheckBox({ todo, updateTodoInList }) {
+  const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
   const [completed, setCompleted] = useState(todo.completed);
 
   const toggleComplete = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8000/todos/${todo.todo_id}`,
+        `${API_BASE_URL}/todos/${todo.todo_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

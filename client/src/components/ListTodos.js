@@ -2,12 +2,14 @@ import React, { Fragment, useEffect, useState } from "react";
 import EditTodo from "./EditTodo";
 import CheckBox from "./CheckBox";
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+
 const ListTodos = () => {
   const [todos, setTodos] = useState([]);
 
   const getTodos = async () => {
     try {
-      const response = await fetch("http://localhost:8000/todos");
+      const response = await fetch(`${API_BASE_URL}/todos`);
       const jsonData = await response.json();
 
       setTodos(jsonData);
@@ -18,7 +20,7 @@ const ListTodos = () => {
 
   const deleteTodo = async (id) => {
     try {
-      const deleteTodo = await fetch(`http://localhost:8000/todos/${id}`, {
+      const deleteTodo = await fetch(`${API_BASE_URL}/todos/${id}`, {
         method: "DELETE",
       });
 

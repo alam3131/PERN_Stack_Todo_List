@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from "react";
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+
 const InputTodo = () => {
   const [description, setDescription] = useState("");
 
@@ -7,7 +9,7 @@ const InputTodo = () => {
     e.preventDefault();
     try {
       const body = { description };
-      const response = await fetch("http://localhost:8000/todos", {
+      const response = await fetch(`${API_BASE_URL}/todos`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
