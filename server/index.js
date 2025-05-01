@@ -2,7 +2,11 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
-require("dotenv").config({ path: "/etc/secrets/.env" });
+
+// This line loads environment variables from a specific .env file located at "/etc/secrets/.env" into the process environment.
+// The dotenv package is used to manage environment variables, making them accessible in the Node.js application via `process.env`.
+// By specifying the `path` option, we ensure that dotenv loads variables from the file at this custom location rather than the default `.env` file in the root directory.
+require("dotenv").config({ path: "/etc/secrets/.env" }); 
 
 // middleware
 app.use(cors());
