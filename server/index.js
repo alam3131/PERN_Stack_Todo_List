@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
+require("dotenv").config({ path: "/etc/secrets/.env" });
 
 // middleware
 app.use(cors());
@@ -38,6 +39,7 @@ app.get("/todos", async (req, res) => {
     console.log("Query successful:", allTodos.rows); // STEP 3
     res.json(allTodos.rows);
   } catch (err) {
+    console.error("Database error:", err); // more descriptive
     console.error(err.message);
   }
 });
