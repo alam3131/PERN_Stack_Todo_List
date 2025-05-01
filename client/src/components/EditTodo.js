@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+const API_BASE_URL = process.env.NEXT_PUBLIC_REACT_APP_API_URL || "http://localhost:8000";
 
 const EditTodo = ({ todo, updateTodoInList }) => {
   const [description, setDescription] = useState(todo.description);

@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 
 export default function CheckBox({ todo, updateTodoInList }) {
-  const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+  const API_BASE_URL = process.env.NEXT_PUBLIC_REACT_APP_API_URL || "http://localhost:8000";
   const [completed, setCompleted] = useState(todo.completed);
 
   const toggleComplete = async () => {
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/todos/${todo.todo_id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ completed: !completed }),
-        }
-      );
+      const response = await fetch(`${API_BASE_URL}/todos/${todo.todo_id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ completed: !completed }),
+      });
 
       if (response.ok) {
         setCompleted((prev) => !prev);
