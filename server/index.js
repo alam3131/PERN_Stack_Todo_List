@@ -33,7 +33,9 @@ app.post("/todos", async (req, res) => {
 
 app.get("/todos", async (req, res) => {
   try {
+    console.log("Received GET /todos request"); // STEP 1
     const allTodos = await pool.query("SELECT * FROM todo");
+    console.log("Query successful:", allTodos.rows); // STEP 3
     res.json(allTodos.rows);
   } catch (err) {
     console.error(err.message);
