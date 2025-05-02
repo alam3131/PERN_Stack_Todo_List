@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function CheckBox({ todo, updateTodoInList }) {
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+  const API_BASE_URL = "https://pern-todo-pdrh.onrender.com" || "http://localhost:8000";
   const [completed, setCompleted] = useState(todo.completed);
 
   const toggleComplete = async () => {

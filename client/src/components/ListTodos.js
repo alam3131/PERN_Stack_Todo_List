@@ -3,15 +3,13 @@ import EditTodo from "./EditTodo";
 import CheckBox from "./CheckBox";
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+  "https://pern-todo-pdrh.onrender.com" || "http://localhost:8000";
 
 const ListTodos = () => {
   const [todos, setTodos] = useState([]);
 
   const getTodos = async () => {
     try {
-      // console.log(API_BASE_URL);
-      console.log(process.env.NEXT_PUBLIC_API_URL);
       const response = await fetch(`${API_BASE_URL}/todos`);
       const jsonData = await response.json();
 
