@@ -3,7 +3,7 @@ import EditTodo from "./EditTodo";
 import CheckBox from "./CheckBox";
 
 const API_BASE_URL =
-  process.env.NEXT_PUBLIC_REACT_APP_API_URL || "http://localhost:8000";
+  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 const ListTodos = () => {
   const [todos, setTodos] = useState([]);
