@@ -6,18 +6,18 @@ const pool = require("./db");
 // This line loads environment variables from a specific .env file located at "/etc/secrets/.env" into the process environment.
 // The dotenv package is used to manage environment variables, making them accessible in the Node.js application via `process.env`.
 // By specifying the `path` option, we ensure that dotenv loads variables from the file at this custom location rather than the default `.env` file in the root directory.
-require("dotenv").config({ path: "/etc/secrets/.env" }); 
+require("dotenv").config({ path: "/etc/secrets/.env" });
 
-var allowlist = ['https://pern-stack-todo-list.vercel.app']
+var allowlist = ["https://pern-stack-todo-list.vercel.app"];
 var corsOptionsDelegate = function (req, callback) {
   var corsOptions;
-  if (allowlist.indexOf(req.header('Origin')) !== -1) {
-    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  if (allowlist.indexOf(req.header("Origin")) !== -1) {
+    corsOptions = { origin: true }; // reflect (enable) the requested origin in the CORS response
   } else {
-    corsOptions = { origin: false } // disable CORS for this request
+    corsOptions = { origin: false }; // disable CORS for this request
   }
-  callback(null, corsOptions) // callback expects two parameters: error and options
-}
+  callback(null, corsOptions); // callback expects two parameters: error and options
+};
 
 // middleware
 app.use(cors(corsOptionsDelegate));

@@ -10,6 +10,7 @@ const ListTodos = () => {
 
   const getTodos = async () => {
     try {
+      console.log(API_BASE_URL);
       const response = await fetch(`${API_BASE_URL}/todos`);
       const jsonData = await response.json();
 
