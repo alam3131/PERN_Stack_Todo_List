@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 
-const API_BASE_URL = "https://pern-todo-pdrh.onrender.com" || "http://localhost:8000";
+const API_BASE_URL =
+  "https://pern-todo-pdrh.onrender.com" || "http://localhost:8000";
 
 const EditTodo = ({ todo, updateTodoInList }) => {
   const [description, setDescription] = useState(todo.description);
@@ -10,14 +11,11 @@ const EditTodo = ({ todo, updateTodoInList }) => {
   const updateDescription = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        `${API_BASE_URL}/todos/${todo.todo_id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ description }),
-        }
-      );
+      const response = await fetch(`${API_BASE_URL}/todos/${todo.todo_id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ description }),
+      });
 
       if (response.ok) {
         updateTodoInList(todo.todo_id, description);

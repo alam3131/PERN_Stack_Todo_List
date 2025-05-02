@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 
-const API_BASE_URL = "https://pern-todo-pdrh.onrender.com" || "http://localhost:8000";
+const API_BASE_URL =
+  "https://pern-todo-pdrh.onrender.com" || "http://localhost:8000";
 
 const InputTodo = () => {
   const [description, setDescription] = useState("");

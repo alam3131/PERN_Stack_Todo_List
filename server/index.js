@@ -8,7 +8,11 @@ const pool = require("./db");
 // By specifying the `path` option, we ensure that dotenv loads variables from the file at this custom location rather than the default `.env` file in the root directory.
 require("dotenv").config({ path: "/etc/secrets/.env" });
 
-var allowlist = ["https://pern-stack-todo-list.vercel.app", "https://pern-stack-todo-list-alam3131s-projects.vercel.app", "https://pern-stack-todo-list-git-main-alam3131s-projects.vercel.app"];
+var allowlist = [
+  "https://pern-stack-todo-list.vercel.app",
+  "https://pern-stack-todo-list-alam3131s-projects.vercel.app",
+  "https://pern-stack-todo-list-git-main-alam3131s-projects.vercel.app",
+];
 var corsOptionsDelegate = function (req, callback) {
   var corsOptions;
   if (allowlist.indexOf(req.header("Origin")) !== -1) {
